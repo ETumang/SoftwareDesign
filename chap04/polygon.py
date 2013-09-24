@@ -1,0 +1,37 @@
+from swampy.TurtleWorld import *
+from math import pi
+
+def square(T, length):
+    for i in range(4):
+        lt(T)
+        fd(T, length)
+
+def polygon(T,length,n):
+    for i in range (n):
+        lt(T,360/n)
+        fd(T,length)
+
+def circle(T,r):
+    circ = 2*pi*r
+    sides = int(r/2)
+    len_sides = circ/sides
+    polygon(T,len_sides,sides)
+
+def arc(T,r,angle):
+    circ = 2*pi*r
+    total_sides = int(r/2)
+    len_sides = circ/total_sides
+    for i in range(0, int(total_sides*angle/360)):
+        fd(T, len_sides)
+        lt(T,360/total_sides)
+    
+
+world = TurtleWorld()
+bob = Turtle()
+bob.delay = .01
+
+arc(bob,50,180)
+
+wait_for_user()
+
+
