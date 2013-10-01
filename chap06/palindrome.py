@@ -35,7 +35,12 @@ def middle(word):
 
 def is_palindrome(word):
     """Returns true if a word is a palindrome and false if it
-    is not.  Word is a string. Returns a boolean."""
+    is not. 
+     
+    word:string
+
+    returns:string
+    """
     if len(word)>2 and not is_palindrome(middle(word)):
         return False
     else:
