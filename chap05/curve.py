@@ -1,5 +1,15 @@
 from swampy.TurtleWorld import *
 
+"""Draws a dragon curve.  Must be used with drawFig.
+
+T: Turtle
+
+Length: positive numeric
+
+Depth: positive integer
+
+Return: none
+"""
 def turnright(T,length,depth):
         if depth==0:
             fd(T,length)
@@ -8,6 +18,16 @@ def turnright(T,length,depth):
             rt(T)
             drawFig(T,length,depth-1)
 
+"""Draws a dragon curve. Must be used with turnright.
+
+T: turtle
+
+Length: positive numeric
+
+Depth: positive integer
+
+Return: none
+"""
 def drawFig(T,length,depth):
     if depth==0:
         fd(T,length)
@@ -16,13 +36,18 @@ def drawFig(T,length,depth):
         lt(T)
         drawFig(T,length,depth-1)
 
-def dragon(T,depth):
-    turnright(T,5,depth)
+"""Draws a dragon curve using turnright and drawfig.
 
+T: turtle
 
+Depth: positive integer
+
+Return: none
+"""
+
+def dragon(T,depth)
 world = TurtleWorld()
 bob = Turtle()
 bob.delay = .01
 
-dragon (bob, 5)
 wait_for_user()
