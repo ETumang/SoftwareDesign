@@ -37,15 +37,15 @@ def find_nums():
 '''Finds a 6-digit number that is a palindrome, with num-2 having a palindromic final 5 digits and num-3 
 having a palindromic final 4 digits.'''
 
-    for i in range(100000,999999):
+    for i in range(000000,999999):
         test = i
-        s = str(test)
+        s = str(test).zfill(6)
         if is_palindrome(s):
             test = test-2
-            s = str(test)[1:]
+            s = str(test)[1:].zfill(5)
             if is_palindrome(s):
                 test = test-1
-                s = str(test)[2:]
+                s = str(test)[2:].zfill(4)
                 if is_palindrome(s):
                     print test
 
