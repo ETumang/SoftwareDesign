@@ -9,7 +9,7 @@ def rotate_word(word, rot):
         w = w + chr(97+shift)
     return w
 
-"""Finds pairs of words in a filethat can be rotated by some
+"""Finds pairs of words in a file that can be rotated by some
 amount to form each other."""
 def rotate_pairs(f):
     d = dict()
