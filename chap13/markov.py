@@ -134,9 +134,9 @@ def get_prefixes(f,n_words):
     text= file(f)
     skip_gutenberg_header(text)
 
-    t = ["",""]
+    t = []
     d = {}
-    pref = ("","")
+    pref = ()
 
     for line in text:
 
@@ -145,15 +145,21 @@ def get_prefixes(f,n_words):
         words  = line.split()
 
         for word in words:
-
-            if pref not in d:
-                d[pref] = []
-
-            d[pref].append(word)
             t.append(word)
-            
-            del t[0]
-            pref = (t[0],t[1])
+
+    for word in t:
+        if len(t) <2:
+            break
+
+        pref = tuple(t[0:n_words])
+
+        if pref not in d:
+            d[pref] = [t[n_words]]
+
+        else:
+            d[pref].append(t[n_words]);
+
+        del(t[0])
 
     return d
 
@@ -171,14 +177,19 @@ def markov(f,len_res,len_phrase):
 
     for i in range(0,len_res):
 
-        first = (first[1],suff)
+        begin_suff=list(first[1:])
+        begin_suff.append(suff)
+
+        first = tuple(begin_suff)
+        
         init = prefix_dict[first]
 
         suff = init[random.randint(0,len(init)-1)]
 
         text.append(first[0])
 
+
     for word in text:
         print word,
 
-markov('emma.txt',500,3)                   
+markov('emma.txt',500,2)
